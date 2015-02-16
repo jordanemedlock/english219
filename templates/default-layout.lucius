@@ -1,0 +1,19 @@
+h1 {
+    text-align: center
+}
+
+.haskell-logo {
+  height: 50px;
+}
+nav.paginator {
+  text-align: center;
+}
+/*
+.define-title {
+  background-color: #BE80FF; 
+  padding: 3px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  font-weight: bolder;
+}
+*/

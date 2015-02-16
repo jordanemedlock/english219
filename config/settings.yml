@@ -1,0 +1,29 @@
+# Values formatted like "_env:ENV_VAR_NAME:default_value" can be overridden by the specified environment variable.
+# See https://github.com/yesodweb/yesod/wiki/Configuration#overriding-configuration-values-with-environment-variables
+
+static-dir:     "_env:STATIC_DIR:static"
+host:           "_env:HOST:*4" # any IPv4 host
+port:           80
+approot:        http://jordanemedlock.com
+ip-from-header: "_env:IP_FROM_HEADER:false"
+
+Development:
+  host: jordanemedlock.com
+  port: 80
+
+# Optional values with the following production defaults.
+# In development, they default to the inverse.
+#
+# development: false
+# detailed-logging: false
+# should-log-all: false
+# reload-templates: false
+# mutable-static: false
+# skip-combining: false
+
+database:
+  database: "_env:SQLITE_DATABASE:english219.sqlite3"
+  poolsize: "_env:SQLITE_POOLSIZE:10"
+
+copyright: Copyright © 2015 Jordan Medlock
+#analytics: UA-YOURCODE

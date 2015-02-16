@@ -1,0 +1,336 @@
+<div class="learn">
+  <h3>Learning Enough Haskell
+  <p>To open command line 
+    <span class="win">press the start button and type "cmd", then press <kbd>enter</kbd>.
+    <span class="mac">press the magnifying glass on the top right corner of your screen, type "terminal", then press <kbd>return</kbd>.
+    <span class="linux">open your terminal.
+  <p>Then type ghci(Glasgow Haskell Compiler Interpretor) into your command line.
+  <h4>Arithmatic In Haskell
+  <p>
+    Haskell will act like a high-powered calculator.
+    Haskell was created by a team of mathematicians and computer scientists in 
+    order to look and act as much like math as possible. It understands the functions:
+    <dl>
+      <dt><code>a + b</code>
+      <dd>Add <code>a</code> and <code>b</code> together.
+      <dt><code>a - b</code>
+      <dd>Subtract <code>b</code> from <code>a</code>.
+      <dt><code>a * b</code>
+      <dd>Multiply <code>a</code> and <code>b</code>.
+      <dt><code>a / b</code>
+      <dd>Divide <code>a</code> by <code>b</code>.
+      <dt><code>^</code>
+      <dd>Raise one number to the power of another number.
+      <dt><code>abs</code>
+      <dd>Get the absolute value of a number.
+      <dt><code>mod</code> or <code>`mod`</code>
+      <dd>
+        Get the remainder of one number divided by the other.
+        The difference between <code>mod</code> and <code>`mod`</code> is that 
+        <code>mod</code> is applied like <code>mod a b</code> while <code>`mod`</code> 
+        is applied like <code>a `mod` b</code>. 
+      <dt><code>pi</code>
+      <dd>The π mathematical value.
+    <dl>
+    Haskell applies math functions in normal order of operations and uses parentheses to change the order.   
+    Try typing some calculations into the interpreter using these mathematical functions.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          1+1
+      <li .list-group-item>
+        <pre>
+          1.25 - 2
+      <li .list-group-item>
+        <pre>
+          15*20
+      <li .list-group-item>
+        <pre>
+          120/360
+      <li .list-group-item>
+        <pre>
+          2^2^2^2
+      <li .list-group-item .list-group-item-warning>
+        The <code>^</code> function represents exponentiations, the previous example is equivalent to 2<sup>2<sup>2<sup>2
+      <li .list-group-item>
+        <pre>
+          3 + 2 * 5
+      <li .list-group-item>
+        <pre>
+          (3 + 2) * 5
+      <li .list-group-item .list-group-item-warning>
+        Haskell obeys the same order of operations as in math 
+      <li .list-group-item>
+        <pre>
+          abs (-1)
+      <li .list-group-item .list-group-item-warning>
+        The <code>abs</code> function represents the absolute value function.
+  <h4>Variables in Haskell
+  <p>
+    The "high-powered" part of haskell is its use of variables.
+    Variables in Haskell are just like variables in math, they are placeholders for some value.
+    To make a variable in Haskell, type <code>let x = 10</code>, where <code>x</code> is the name of a variable, and <code>10</code> is its value.
+    To use these variables again just type their name.
+    Try creating some variables now.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          let a = 2
+      <li .list-group-item>
+        <pre>
+          let b = pi*a
+      <li .list-group-item>
+        <pre>
+          a + b
+      <li .list-group-item .list-group-item-warning>
+        Any value can be on the right side of the equal sign
+      <li .list-group-item>
+        <pre>
+          let someValue = 42 
+      <li .list-group-item .list-group-item-warning>
+        You can name variables any set of characters, but it cannot contain spaces
+  <h4>Comparison Functions in Haskell
+  <p>
+    Haskell can also compare values using the following functions <code>==</code>, <code>/=</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&gt;</code>.
+    Each of these functions take two numbers and give you whats called a "boolean" value.  Boolean values represent one of two options: True, or False.
+    Try them out now.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          let a = 10
+          a == 10
+      <li .list-group-item>
+        <pre>
+          3 /= pi
+      <li .list-group-item>
+        <pre>
+          10 &gt; 35
+      <li .list-group-item>
+        <pre>
+          10 &lt; 10
+      <li .list-group-item>
+        <pre>
+          10 &lt;= 10
+  <h4>Boolean Functions in Haskell
+  <p>
+    The boolean values can be combined by using boolean operators.
+    Boolean operators compare two boolean values and give you a boolean result.
+    The boolean operators are <code>&amp;&amp;</code>, <code>||</code>, and <code>not</code>.
+    Try them out now.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          True &amp;&amp; True
+      <li .list-group-item>
+        <pre>
+          True &amp;&amp; False
+      <li .list-group-item>
+        <pre>
+          True || False
+      <li .list-group-item>
+        <pre>
+          True || True
+      <li .list-group-item>
+        <pre>
+          False || False
+      <li .list-group-item>
+        <pre>
+          not True
+      <li .list-group-item>
+        <pre>
+          not False
+  <h4>If Statements in Haskell
+  <p>
+    Boolean values are usefull for using <code>if True then 10 else 11 </code> statements.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          let a = 10
+          let b = 5
+          if a &lt; b then a else b
+      <li .list-group-item>
+        <pre>
+          let value = if True then 5 else 10
+
+  <h4>Lists in Haskell
+  <p>
+    Haskell has another type of value you can use called a list.
+    A list is just a group of values.
+    Lists are created with by using square brackets and commas like this <code>[1,2,3,4]</code>.
+    Lists can contain any element as long as all the elements are of the same type so: <code>[1,True,10,False,[1,2,4]]</code> would not work.
+    You can create empty lists by typing <code>[]</code>.
+    Try making some lists in your command line.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          let x = [1,2,3,4,5]
+      <li .list-group-item>
+        <pre>
+          [pi,2+3,3/125,4^26]
+      <li .list-group-item>
+        <pre>
+          let z = [True,True,False,True]
+  <p>Haskell also has nice ways to create lists without specifying all the elements using the <code>..</code> operator.
+  <p>The <code>..</code> operator creates a list with the range from the start number to the ending number.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          [1..10]
+          [1,2,3,4,5,6,7,8,9,10]
+      <li .list-group-item>
+        <pre>
+          [-10..10]
+      <li .list-group-item>
+        <pre>
+          [-pi..pi]
+  <p>Haskell also allows specifying a step size.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          [1,3..10]
+          [1,3,5,7,9]
+      <li .list-group-item>
+        <pre>
+          [-pi,-pi/2..pi]
+  <p>Haskell's lists are 'lazy' which means that it has no problem creating infinitely long lists.
+  <warning>Press <span class="win linux"><kbd>ctrl-c</kbd></span><span class="mac"><kbd>control-c</kbd></span> to stop the endlessly long list from printing.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          [1..]
+      <li .list-group-item>
+        <pre>
+          let x = [1..]
+      <li .list-group-item .list-group-item-warning>Notice how the last example didn't take forever to run. This is because Haskell doesn't try to create the list until you need to access it.
+  <h5>List Functions
+  <p>Like numbers lists have a few operations that apply to them.
+  <p>++ joins two lists together.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          [1,2,3] ++ [4,5,6]
+      <li .list-group-item>
+        <pre>
+          [1,2,3] ++ [4,5,6] ++ [7,8,9]
+  <p>: adds an element to the front of the list.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+           1 : [2,3,4]
+      <li .list-group-item>
+        <pre>
+           1 : 2 : 3 : [4,5,6]
+      <li .list-group-item .list-group-item-warning>
+        When you join multiple : statements together they one-by-one add their element to the front of the list.
+      <li .list-group-item .list-group-item-warning>
+        You cannot add individual elements to the back of a list.  If you want to do that you have to wrap the element in a list like this: [1,2,3] ++ [4].
+        Keep in mind that adding elements to the back of a list is very slow and should be avoided.
+
+  <p>There are a few more operators that you can use on lists.
+  <dl>
+    <dt>
+      <h3 .define-title>
+        sum
+    <dd>
+      <div .panel.panel-primary>
+        <div .panel-heading>Examples
+        <ul .list-group>
+          <li .list-group-item>
+            <pre>
+              sum [1..10]
+  <dl>
+    <dt>
+      <h3 .define-title>
+        !!
+    <dd>
+      <div .panel.panel-primary>
+        <div .panel-heading>Examples
+        <ul .list-group>
+          <li .list-group-item>
+            <pre>
+              [1..] !! 20
+          <li .list-group-item .list-group-item-warning>Something about indexes starting at 0
+  <dl>
+    <dt>
+      <h3 .define-title>
+        length
+    <dd>
+      <div .panel.panel-primary>
+        <div .panel-heading>Examples
+        <ul .list-group>
+          <li .list-group-item>
+            <pre>
+              length [1..10]
+  <dl>
+    <dt>
+      <h3 .define-title>
+        take
+    <dd>
+      <div .panel.panel-primary>
+        <div .panel-heading>Examples
+        <ul .list-group>
+          <li .list-group-item>
+            <pre>
+              take 10 [1..]
+  <dl>
+    <dt>
+      <h3 .define-title>
+        repeat
+    <dd>
+      <div .panel.panel-primary>
+        <div .panel-heading>Examples
+        <ul .list-group> 
+          <li .list-group-item>
+            <pre>
+              take 10 (repeat pi)
+  <h4>Functions in Haskell
+  <p>
+    You've used a lot of functions in Haskell, but it wouldn't be very usefull if 
+    you couldn't create your own.
+    Defining functions in Haskell is a lot like making variables. The main difference is 
+    that you can add variables that are used only in the function.
+    These variables are called arguments.
+    Functions in Haskell look a lot like functions in math.
+    <code>let f x = 2 * x + 7</code>
+    Lets check out some examples.
+  <div .panel.panel-primary>
+    <div .panel-heading>Examples
+    <ul .list-group>
+      <li .list-group-item>
+        <pre>
+          let factorial n = product [1..n]
+          factorial 10
+      <li .list-group-item>
+        <pre>
+          let gcd a b = if b == 0 then a else gcd b (a `mod` b)
+          gcd 12432 789
+      <li .list-group-item .list-group-item-warning>
+        Functions can call themselves within themselves creating a pattern called 
+        <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=recursion">recursion.
+  <h4>Conclusion
+  <p>
+    That's all the Haskell you need for now.
+    It's a huge incredibly complicated language and it takes years to fully 
+    master it, if it can be completely mastered.

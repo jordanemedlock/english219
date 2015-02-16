@@ -1,0 +1,13 @@
+<div class="install">
+  <h2>How to Download and Install Haskell
+  <ol>
+    <li>
+      Download the Haskell platform
+      <a id="download-haskell" href="">
+        here
+    <li>
+      Locate your "Downloads" folder.
+    <li>
+      Double click the file named "<span id="exe-name"></span>" to run the installer.
+    <li>
+      Follow the steps in the installer until it finishes.

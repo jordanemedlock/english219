@@ -1,0 +1,23 @@
+<h2>
+  <img src="http://ghc.io/static/haskell.svg" class="haskell-logo">
+  How to Solve the First 3 Problems in Project Euler
+<div class="intro">
+  <h2>Introduction
+  <p>
+    I want anyone to be able to use this tutorial, but I don't intend for anyone to leave this with all the knowledge of a CS degree.
+    I am hoping, however, that you may consider solving future problems using a little bit of Haskell.
+  <h2>
+    Project Euler
+  <p>
+    <a href="http://projecteuler.net">
+      Project Euler
+    \is a series of mathematic challenges that cannot be solved  without the use of programming skills. 
+    You will need to register for Project Euler to submit your answers and have your name added to the list of people who have finished those problems.
+  <h2>
+    Haskell
+  <p>
+    <a href="https://wiki.haskell.org/Haskell">
+      Haskell 
+    \ is a general-purpose, purely-functional programming language.  
+    It was developed by a team of Mathematicians and Computer Scientists in order to look and act as much like math as possible. 
+    Becuase of this there is no better language to solve Project Euler problems than Haskell.

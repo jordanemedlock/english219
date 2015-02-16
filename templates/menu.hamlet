@@ -1,0 +1,10 @@
+<div .row>
+  <nav>
+    <ul .nav.nav-pills>
+      $forall (l,t) <- menuItems
+        $if route == l
+          <li .active>
+            <a href=@{l}>#{t}
+        $else 
+          <li>
+            <a href=@{l}>#{t}

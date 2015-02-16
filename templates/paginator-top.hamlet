@@ -1,0 +1,18 @@
+<nav>
+  <ul .pager>
+    $if page /= (pageNumbers !! 0)
+      <li .previous>
+        <a href=@{partialRoute (page - 1)}>
+          <span aria-hidden="false">
+            &laquo; #{pageTitles !! (page - 2)}
+    $with lastPage <- (pageNumbers !! ((length pageNumbers) - 1))
+      $if page /= lastPage
+        <li .next>
+          <a aria-label="Next" href=@{partialRoute (page + 1)}>
+            <span aria-hidden="false">
+              #{pageTitles !! (page)} &raquo;
+
+
+            
+      
+

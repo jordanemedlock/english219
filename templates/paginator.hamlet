@@ -1,0 +1,35 @@
+<nav .paginator>
+  <ul .pagination .pagination-lg>
+    $if page == (pageNumbers !! 0)
+      <li .disabled>
+        <a aria-label="Previous">
+          <span aria-hidden="true">
+            &laquo;
+    $else
+      <li>
+        <a aria-label="Previous" href=@{partialRoute (page - 1)}>
+          <span aria-hidden="false">
+            &laquo;
+    $forall i <- pageNumbers
+      $if i == page
+        <li .active>
+          <a>#{i} <span class="sr-only">(current)</span>
+      $else
+        <li>
+          <a href=@{partialRoute i}>#{i}
+    $with lastPage <- (pageNumbers !! ((length pageNumbers) - 1))
+      $if page == lastPage
+        <li .disabled>
+          <a aria-label="Next">
+            <span aria-hidden="true">
+              &raquo;
+      $else
+        <li>
+          <a aria-label="Next" href=@{partialRoute (page + 1)}>
+            <span aria-hidden="false">
+              &raquo;
+
+
+            
+      
+
