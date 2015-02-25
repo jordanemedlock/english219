@@ -1,0 +1,60 @@
+<div .problem>
+  <h4>Problem 3 "Largest Prime Factor"
+  <blockquote>
+    The prime factors of 13195 are 5, 7, 13 and 29.
+    <br>
+    What is the largest prime factor of the number 600851475143?
+  <p>
+    This has two major sections "Prime" and "Factor".
+    This means we should define a function to find if a value is prime and 
+    another to determine the largest factor, that is also prime.
+    We can use quickly define a factor function using the mod function like we did in problem 1.
+    This time we will have to make it work for any number not just 3 and 5.
+    <pre>
+      ghci&gt; let isFactor x n = (mod n x) == 0
+    In this case we are checking if <code>n</code> is a factor of <code>x</code>.
+    We can use this and the 
+    <a href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes 
+    to create a list of all prime numbers.
+    We are going to have to make another version of isFactor that checks if any 
+    of the elements of a list are a factor of the number.
+    <pre>
+      let isFactorIn xs n = map (isFactor n) xs
+    This returns a list of booleans each one representing weather or not that number is a factor of n.
+    Try it.
+    <div .panel.panel-primary>
+      <div .panel-heading>Examples
+      <ul .list-group>
+        <li .list-group-item>
+          <pre>
+            gchi&gt; isFactorIn [1,2,3,4,5] 10
+            [True,True,False,False,True]
+        <li .list-group-item>
+          <pre>
+            gchi&gt; isFactorIn [1,2,3,4,5] 7
+            [True,False,False,False,False]
+        <li .list-group-item>
+          <pre>
+            gchi&gt; isFactorIn [2,3,5,7,13,17] 23
+            [False,False,False,False,False,False]
+        <li .list-group-item .list-group-item-warning>
+          Notice how if we can use a list of prime numbers we can find out if another number is prime.
+    If every element returned from <code>isFactorIn</code> is False then we know that the number is prime.
+    So we should write a function that figures out if there are any Trues in a list.
+    <pre>
+      ghci&gt; let allFalse xs = (length (filter id xs)) > 0
+    This returns True if all the elements of the list are False.
+    Lets combine them now:
+    <pre>
+      ghci&gt; let isPrime primes n = allFalse (isFactorIn (takeWhile (&lt;n) primes) n)
+    We still need a list of primes to get a list of primes.
+    Thankfully, Haskell is very good at using lists to generate themselves.
+    <pre>
+      ghci&gt; let seive xs = (head xs) : (seive (filter (isFactor (head xs)) (tail xs)))
+      ghci&gt; let primes = seive [2..]
+    Those are all the primes and they will print forever if you decide to.
+    Now to find the largest prime factor of 600851475143.
+    To do that we can just use filter.
+    <pre>
+      ghci&gt; filter (isFactor 600851475143) primes
+    The last number on that list is our answer!

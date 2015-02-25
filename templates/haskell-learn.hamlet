@@ -1,5 +1,6 @@
 <div class="learn">
   <h3>Learning Enough Haskell
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/JJlI5FPTbgE" frameborder="0" allowfullscreen>
   <p>To open command line 
     <span class="win">press the start button and type "cmd", then press <kbd>enter</kbd>.
     <span class="mac">press the magnifying glass on the top right corner of your screen, type "terminal", then press <kbd>return</kbd>.

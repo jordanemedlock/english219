@@ -1,5 +1,6 @@
 <div class="install">
   <h2>How to Download and Install Haskell
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/mBS8yyWvTv4" frameborder="0" allowfullscreen>
   <ol>
     <li>
       Download the Haskell platform

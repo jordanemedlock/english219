@@ -38,7 +38,7 @@ instance HasHttpManager App where
 mkYesodData "App" $(parseRoutesFile "config/routes")
 
 menuItems :: [(Route App, Text)]
-menuItems = [(HomeR,"Home"), ((LearnHaskellR 1),"Project 1"), ((Project2R),"Project 2"), ((Project3R),"Project 3")]
+menuItems = [(HomeR,"Home"), ((LearnTOCR),"Project 1"), ((Project2R),"Project 2"), ((Project3R),"Project 3")]
 
 
 -- | A convenient synonym for creating forms.

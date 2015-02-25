@@ -5,6 +5,7 @@
 /robots.txt RobotsR GET
 
 / HomeR GET
+/learnHaskell LearnTOCR GET
 /learnHaskell/#Int LearnHaskellR GET
 /project2 Project2R GET
 /project3 Project3R GET
