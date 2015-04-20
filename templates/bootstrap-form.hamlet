@@ -1,0 +1,18 @@
+\#{fragment}
+$forall view <- views
+  <div .form-group :fvRequired view:.required :not $ fvRequired view:.optional :has $ fvErrors view:.error>
+    $case (form formConfig)
+      $of BootstrapBasicForm
+        <label for=#{fvId view}>#{fvLabel view}
+        ^{fvInput view}
+        ^{helpWidget view}
+      $of BootstrapInlineForm
+        <label .sr-only for=#{fvId view}>#{fvLabel view}
+        ^{fvInput view}
+        ^{helpWidget view}
+      $of BootstrapHorizontalForm containerOffset containerClass labelClass
+        <label .control-label .#{labelClass} for=#{fvId view}>#{fvLabel view}
+          <div .#{containerClass}>
+            ^{fvInput view}
+          ^{helpWidget view}
+^{submitWidget $ formConfig}

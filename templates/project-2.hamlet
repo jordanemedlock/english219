@@ -1,0 +1,3 @@
+<div .row>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src=@{StaticR img_project2_pdf} .img-responsive .center-block .embed-responsive-item>

@@ -24,7 +24,7 @@ $newline never
   <body>
     <div class="container">
       <header>
-        <h1>Jordan E Medlock's Website
+        <h1>Jordan E Medlock&#39;s Website
       <div id="main" role="main">
         ^{pageBody pc}
       <footer>

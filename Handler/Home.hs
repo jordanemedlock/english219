@@ -1,6 +1,14 @@
 module Handler.Home where
 
 import Import
+import Text.Blaze
+
+encode :: String -> Markup 
+encode s = preEscapedToMarkup $ concatMap ((++";") . ("&#"++) . show . fromEnum) s 
+
+email :: Markup
+email = encode "medlock@unm.edu"
+
 -- This is a handler function for the GET request method on the HomeR
 -- resource pattern. All of your resource patterns are defined in
 -- config/routes

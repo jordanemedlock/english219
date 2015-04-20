@@ -11,6 +11,7 @@ import qualified Yesod.Core.Unsafe as Unsafe
  {-# LANGUAGE OverloadedStrings #-}
 import Data.Text
 import Text.Blaze (ToMarkup(..))
+import Text.Markdown
 
 
 -- | The foundation datatype for your application. This can be a good place to

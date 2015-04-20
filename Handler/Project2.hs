@@ -9,4 +9,4 @@ getProject2R = do
     defaultLayout $ do
         setTitle "Jordan E Medlock - Project 2"
         $(widgetFile "menu")
-        [whamlet|Project 2|]
+        $(widgetFile "project-2")

@@ -26,6 +26,8 @@ library
                      Handler.Project2
                      Handler.Project3
                      Handler.LearnTOC
+                     Handler.Blog
+                     Handler.Article
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
@@ -86,6 +88,9 @@ library
                  , vector
                  , time
                  , blaze-markup
+                 , yesod-text-markdown
+                 , markdown
+                 , blaze-html
 
 executable         english219
     if flag(library-only)

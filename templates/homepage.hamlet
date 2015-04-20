@@ -1,1 +1,16 @@
-<div class=row>
+<div class="row">
+    <div class="panel panel-default col-md-4 col-md-offset-4">
+        <div .panel-heading>
+            About Me
+        <ul .list-group>
+            <li .list-group-item>
+                <img .img-rounded .img-responsive .center-block src=@{StaticR img_jem_png} alt="Me and my beautiful fiancé looking over Glen Canyon Dam">
+            <li .list-group-item .text-center>
+                <a href="mailto:#{email}" .email>
+                    <i .glyphicon .glyphicon-envelope>
+            <li .list-group-item>
+                I am a student at the University of New Mexico working on my 
+                Computer Science degree. I love to create new things and I love 
+                to teach.  
+            <li .list-group-item>
+

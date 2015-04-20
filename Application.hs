@@ -36,6 +36,8 @@ import Handler.LearnHaskell
 import Handler.Project2
 import Handler.Project3
 import Handler.LearnTOC
+import Handler.Blog
+import Handler.Article
 
 
 
