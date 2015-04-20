@@ -2,6 +2,10 @@ h1 {
     text-align: center
 }
 
+.icon {
+  height: 50px;
+}
+
 .haskell-logo {
   height: 50px;
 }

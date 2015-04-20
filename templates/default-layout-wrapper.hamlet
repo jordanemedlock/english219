@@ -25,7 +25,7 @@ $newline never
     <div class="container">
       <header>
         <h1>
-          <img src=@{StaticR img_favicon_png}>
+          <img src=@{StaticR img_favicon_png} .icon>
           Jordan E Medlock&#39;s Website
       <div id="main" role="main">
         ^{pageBody pc}
