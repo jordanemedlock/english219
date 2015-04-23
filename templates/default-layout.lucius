@@ -4,6 +4,7 @@ h1 {
 
 .icon {
   height: 50px;
+  vertical-align: middle;
 }
 
 .haskell-logo {
