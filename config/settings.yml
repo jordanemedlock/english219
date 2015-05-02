@@ -4,11 +4,11 @@
 static-dir:     "_env:STATIC_DIR:static"
 host:           "_env:HOST:*4" # any IPv4 host
 port:           80
-approot:        http://jordanemedlock.com
+approot:        ""
 ip-from-header: "_env:IP_FROM_HEADER:false"
 
 Development:
-  host: jordanemedlock.com
+  host: ""
   port: 80
 
 # Optional values with the following production defaults.

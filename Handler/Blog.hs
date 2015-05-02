@@ -79,28 +79,6 @@ submitWidget (BootstrapFormConfig (BootstrapHorizontalForm containerOffset conta
 submitWidget (BootstrapFormConfig _ submit) = [whamlet|<button type=submit .btn .btn-default>#{submit}|]
 
 
-getBlogR :: Handler Html
-getBlogR = do
-    -- Get the list of articles inside the database.
-    articles <- runDB $ selectList [] [Desc ArticleTitle]
-    -- We'll need the two "objects": articleWidget and enctype
-    -- to construct the form (see templates/articles.hamlet).
-    (articleWidget, enctype) <- generateFormPost entryForm
-    defaultLayout $ do
-        $(widgetFile "articles")
-
-postBlogR :: Handler Html
-postBlogR = do
-    ((res,articleWidget),enctype) <- runFormPost entryForm
-    case res of
-         FormSuccess article -> do
-            articleId <- runDB $ insert article
-            setMessage $ toHtml $ (articleTitle article) <> " created"
-            redirect $ ArticleR articleId
-         _ -> defaultLayout $ do
-                setTitle "Please correct your entry form"
-                $(widgetFile "articleAddError")
-
 renderBootstrap3 :: Monad m => BootstrapFormConfig -> FormRender m a
 renderBootstrap3 formConfig aform fragment = do
     (res, views') <- aFormToForm aform
@@ -124,3 +102,32 @@ entryForm :: Form Article
 entryForm = renderBootstrap3 hConfig $ Article
     <$> areq   textField (bootstrapFieldSettings hConfig "Title" Nothing (Just "Title") Nothing Nothing) Nothing
     <*> areq   myMarkdownEditor (bootstrapFieldSettings hConfig "Content" Nothing (Just "Content") Nothing Nothing) Nothing
+
+
+
+
+
+
+
+
+getBlogR :: Handler Html
+getBlogR = do
+    -- Get the list of articles inside the database.
+    articles <- runDB $ selectList [] [Desc ArticleTitle]
+    -- We'll need the two "objects": articleWidget and enctype
+    -- to construct the form (see templates/articles.hamlet).
+    (articleWidget, enctype) <- generateFormPost entryForm
+    defaultLayout $ do
+        $(widgetFile "articles")
+
+postBlogR :: Handler Html
+postBlogR = do
+    ((res,articleWidget),enctype) <- runFormPost entryForm
+    case res of
+         FormSuccess article -> do
+            articleId <- runDB $ insert article
+            setMessage $ toHtml $ (articleTitle article) <> " created"
+            redirect $ ArticleR articleId
+         _ -> defaultLayout $ do
+                setTitle "Please correct your entry form"
+                $(widgetFile "articleAddError")

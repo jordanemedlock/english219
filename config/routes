@@ -12,3 +12,4 @@
 /blog BlogR GET POST
 /blog/#ArticleId ArticleR GET DELETE
 /delete/blog/#ArticleId DeleteArticleR GET DELETE
+/edit/blog/#ArticleId EditArticleR GET POST
