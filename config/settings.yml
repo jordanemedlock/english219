@@ -4,11 +4,11 @@
 static-dir:     "_env:STATIC_DIR:static"
 host:           "_env:HOST:*4" # any IPv4 host
 port:           80
-approot:        ""
+approot:        "http://localhost:3000"
 ip-from-header: "_env:IP_FROM_HEADER:false"
 
 Development:
-  host: ""
+  host: "localhost:3000"
   port: 80
 
 # Optional values with the following production defaults.

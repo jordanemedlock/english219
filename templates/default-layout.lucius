@@ -13,6 +13,47 @@ h1 {
 nav.paginator {
   text-align: center;
 }
+
+textarea.markdown {
+  height: 40em;
+  font-family: 'Courier';
+  tab-size:4;
+  -moz-tab-size: 4;
+  -o-tab-size:  4;
+  white-space: pre-wrap;
+}
+
+textarea.preview.markdown {
+  height: 20em;
+}
+
+.panel-title {
+  font-size: 3em;
+}
+
+.info {
+  color: #AA9;
+}
+
+small {
+  font-size: 12pt;
+}
+
+iframe {
+  padding: 10px;
+  border: 2px;
+  border-color: #000;
+}
+
+.spoilers:active pre {
+  color: #000;
+}
+
+.spoilers pre {
+  background-color: rgb(245, 245, 245);
+  color: rgb(245, 245, 245);
+}
+
 /*
 .define-title {
   background-color: #BE80FF; 

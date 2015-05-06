@@ -2,3 +2,6 @@ $maybe msg <- mmsg
   <div #message>#{msg}
 
 ^{widget}
+
+<a href=@{EditBlogR}>
+  admin area

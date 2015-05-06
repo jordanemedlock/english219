@@ -1,13 +1,13 @@
 module Handler.Home where
 
 import Import
-import Text.Blaze
+import Text.Blaze (preEscapedToMarkup, Markup)
 
-encode :: String -> Markup 
+encode :: Text -> Markup
 encode s = preEscapedToMarkup $ concatMap ((++";") . ("&#"++) . show . fromEnum) s 
 
 email :: Markup
-email = encode "medlock@unm.edu"
+email = encode ("medlock@unm.edu" :: Text)
 
 -- This is a handler function for the GET request method on the HomeR
 -- resource pattern. All of your resource patterns are defined in
@@ -23,3 +23,4 @@ getHomeR = do
         setTitle "Jordan E Medlock - Home"
         $(widgetFile "menu")
         $(widgetFile "homepage")
+

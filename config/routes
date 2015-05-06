@@ -9,7 +9,8 @@
 /learnHaskell/#Int LearnHaskellR GET
 /project2 Project2R GET
 /project3 Project3R GET
-/blog BlogR GET POST
+/blog BlogR GET
+/edit/blog EditBlogR GET POST
 /blog/#ArticleId ArticleR GET DELETE
 /delete/blog/#ArticleId DeleteArticleR GET DELETE
 /edit/blog/#ArticleId EditArticleR GET POST

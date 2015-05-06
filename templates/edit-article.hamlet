@@ -1,14 +1,2 @@
-<form method="post" enctype="application/x-www-form-urlencoded">
-  <input type="hidden" name="_token" value="cPhj9ZQv3L">
-  <div class="form-group required ">
-    <label for="hident2">
-      Title
-    <input id="hident2" name="f1" type="text" required value="#{articleTitle article}" class="form-control" placeholder="Title">
-
-  <div class="form-group required ">
-    <label for="hident3">
-      Content
-    <textarea id="hident3" name="f2" class="form-control markdown" placeholder="Content">
-      #{articleContent article}
-  <button class="btn btn-default" type="submit">
-    Submit
+<form method=post enctype=#{enctype}>
+  ^{articleWidget}

@@ -28,6 +28,8 @@ library
                      Handler.LearnTOC
                      Handler.Blog
                      Handler.Article
+                     Model.Article
+                     MenuItems
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
@@ -81,6 +83,7 @@ library
                  , monad-logger                  >= 0.3        && < 0.4
                  , fast-logger                   >= 2.2        && < 2.3
                  , wai-logger                    >= 2.2        && < 2.3
+                 , yesod-markdown                >= 0.9
                  , file-embed
                  , safe
                  , unordered-containers
@@ -88,9 +91,6 @@ library
                  , vector
                  , time
                  , blaze-markup
-                 , yesod-text-markdown
-                 , markdown
-                 , blaze-html
 
 executable         english219
     if flag(library-only)

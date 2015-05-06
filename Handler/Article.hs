@@ -1,55 +1,52 @@
 module Handler.Article where
 
 import Import
-import Text.Markdown
-import Yesod.Form.Functions
-import Yesod.Form.Fields
-import Yesod.Form.Bootstrap3
+import Yesod.Markdown
+import Model.Article
 
 getArticleR :: ArticleId -> Handler Html
 getArticleR articleId = do
     article <- runDB $ get404 articleId
+    liftIO $ print (articleTimePosted article)
     defaultLayout $ do
         setTitle $ toHtml $ articleTitle article
+        let route = BlogR
+        $(widgetFile "menu")
         $(widgetFile "article")
 
 deleteArticleR :: ArticleId -> Handler Html
 deleteArticleR articleId = do
     runDB $ delete articleId
-    redirect BlogR
+    redirect EditBlogR
 
 getDeleteArticleR :: ArticleId -> Handler Html
 getDeleteArticleR articleId = do
     runDB $ delete articleId
-    redirect BlogR
+    redirect EditBlogR
 
 deleteDeleteArticleR :: ArticleId -> Handler Html
 deleteDeleteArticleR articleId = do
     runDB $ delete articleId
-    redirect BlogR
+    redirect EditBlogR
 
 getEditArticleR :: ArticleId -> Handler Html
 getEditArticleR articleId = do
     article <- runDB $ get404 articleId
-    (articleWidget, enctype) <- generateFormPost entryForm
+    (articleWidget, enctype) <- generateFormPost $ articleForm (Just article)
     defaultLayout $ do
-
+        let route = BlogR
+        $(widgetFile "menu")
         $(widgetFile "edit-article")
 
 postEditArticleR :: ArticleId -> Handler Html
 postEditArticleR articleId = do
-    ((res,articleWidget),enctype) <- runFormPost entryForm
+    ((res,articleWidget),enctype) <- runFormPost $ articleForm Nothing
     case res of
         FormSuccess article -> do
-            runDB $ updateWhere [ArticleId ==. articleId] [ArticleTitle =. (articleTitle article), ArticleContent =. (articleContent article)]
-            setMessage $ toHtml $ (articleTitle article) <> " edited"
-            redirect $ ArticleR articleId
+            runDB $ updateArticle articleId article
+            redirect (ArticleR articleId)
         _ -> defaultLayout $ do
-                setTitle "Please correct your entry form"
-                $(widgetFile "articleAddError")
+            -- redirect BlogR
+            setTitle "Please correct your entry form"
+            $(widgetFile "articleAddError")
 
-
-entryForm :: Form Article
-entryForm = renderBootstrap3 BootstrapBasicForm $ (\x y -> Article x (unTextarea y))
-    <$> areq   textField "Title" Nothing
-    <*> areq   textareaField "Content" Nothing

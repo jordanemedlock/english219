@@ -10,8 +10,6 @@ import Yesod.Core.Types     (Logger)
 import qualified Yesod.Core.Unsafe as Unsafe
  {-# LANGUAGE OverloadedStrings #-}
 import Data.Text
-import Text.Blaze (ToMarkup(..))
-import Text.Markdown
 
 
 -- | The foundation datatype for your application. This can be a good place to
@@ -39,11 +37,28 @@ instance HasHttpManager App where
 mkYesodData "App" $(parseRoutesFile "config/routes")
 
 menuItems :: [(Route App, Text)]
-menuItems = [(HomeR,"Home"), ((LearnTOCR),"Project 1"), ((Project2R),"Project 2"), ((Project3R),"Project 3")]
+menuItems = [(HomeR,"Home"), (BlogR,"Blog")]
 
 
 -- | A convenient synonym for creating forms.
 type Form x = Html -> MForm (HandlerT App IO) (FormResult x, Widget)
+
+
+isAdmin = do
+    mu <- maybeAuthId
+    case mu of
+        Nothing -> return AuthenticationRequired
+        Just uid -> do
+            muser <- runDB $ get uid
+            liftIO $ do
+                putStrLn "***"
+                print (userIdent <$> muser)
+                putStrLn "***"
+            case muser of 
+                Nothing -> return $ Unauthorized "You must be an admin"
+                Just user -> case userIdent user of
+                    "jordanemedlock@gmail.com" -> return Authorized
+                    x -> return $ Unauthorized "You must be an admin"
 
 -- Please see the documentation for the Yesod typeclass. There are a number
 -- of settings which can be configured by overriding methods here.
@@ -79,7 +94,11 @@ instance Yesod App where
     isAuthorized (AuthR _) _ = return Authorized
     isAuthorized FaviconR _ = return Authorized
     isAuthorized RobotsR _ = return Authorized
+    isAuthorized (StaticR _) _ = return Authorized
     -- Default to Authorized for now.
+    isAuthorized (DeleteArticleR _) _ = isAdmin
+    isAuthorized (EditArticleR _) _ = isAdmin
+    isAuthorized EditBlogR _ = isAdmin
     isAuthorized _ _ = return Authorized
 
     -- This function creates static content files in the static folder
@@ -132,9 +151,8 @@ instance YesodAuth App where
     getAuthId creds = runDB $ do
         x <- getBy $ UniqueUser $ credsIdent creds
         case x of
-            Just (Entity uid _) -> return $ Just uid
-            Nothing -> do
-                fmap Just $ insert User
+            Just (Entity uid user) -> return $ Just (uid)
+            Nothing -> Just <$> insert User
                     { userIdent = credsIdent creds
                     , userPassword = Nothing
                     }

@@ -10,7 +10,11 @@ Email
     UniqueEmail email
 Article
 	title Text
-	content Text
-	deriving
+    previewImage Text
+    previewText Markdown
+	content Markdown
+    timePosted UTCTime
+    timeEdited UTCTime
+	deriving Show
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)

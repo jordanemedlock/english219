@@ -1,5 +1,5 @@
-<h1> #{articleTitle article}
-<article> #{markdown def $ pack $ unpack $ articleContent article}
-<hr>
-<a href=@{BlogR}>
-    Go to article list.
+<h1> 
+  #{articleTitle article}
+<br>
+<article> 
+  #{markdownToHtmlTrusted $ articleContent article}
