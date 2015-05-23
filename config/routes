@@ -4,13 +4,16 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/ HomeR GET
+/home HomeR GET
 /learnHaskell LearnTOCR GET
 /learnHaskell/#Int LearnHaskellR GET
 /project2 Project2R GET
 /project3 Project3R GET
-/blog BlogR GET
+/ BlogR GET
+-- /blog.json JSONBlogR GET POST
 /edit/blog EditBlogR GET POST
+-- /blog.json/#ArticleId JSONArticleR GET POST
 /blog/#ArticleId ArticleR GET DELETE
 /delete/blog/#ArticleId DeleteArticleR GET DELETE
 /edit/blog/#ArticleId EditArticleR GET POST
+/bio BioR GET 

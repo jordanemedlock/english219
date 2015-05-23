@@ -15,6 +15,7 @@ Article
 	content Markdown
     timePosted UTCTime
     timeEdited UTCTime
+    posted Bool Maybe
 	deriving Show
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)

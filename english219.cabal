@@ -84,6 +84,7 @@ library
                  , fast-logger                   >= 2.2        && < 2.3
                  , wai-logger                    >= 2.2        && < 2.3
                  , yesod-markdown                >= 0.9
+                 , mime-mail
                  , file-embed
                  , safe
                  , unordered-containers
@@ -91,6 +92,7 @@ library
                  , vector
                  , time
                  , blaze-markup
+                 , aeson-pretty
 
 executable         english219
     if flag(library-only)

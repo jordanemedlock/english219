@@ -8,6 +8,8 @@
             <li .list-group-item .text-center>
                 <a href="mailto:#{email}" .email>
                     <i .glyphicon .glyphicon-envelope>
+                <a href="https://www.linkedin.com/in/jordanemedlock" .email>
+                    <i .fa .fa-linkedin>
             <li .list-group-item>
                 I am a student at the University of New Mexico working on my 
                 Computer Science degree. I love to create new things and I love 

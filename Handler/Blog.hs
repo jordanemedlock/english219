@@ -2,6 +2,8 @@ module Handler.Blog (
     getBlogR,
     getEditBlogR,
     postEditBlogR,
+    getJSONBlogR,
+    postJSONBlogR,
     YesodNic,
     nicHtmlField
 ) where
@@ -24,8 +26,8 @@ partialGetBlog edit route = do
     -- to construct the form (see templates/articles.hamlet).
     (articleWidget, enctype) <- generateFormPost $ articleForm Nothing
     defaultLayout $ do
-        setTitle "Jordan E Medlock - Blog"
-        $(widgetFile "menu")
+        let color = "red"
+        setTitle "Jordan E Medlock"
         $(widgetFile "articles")
 
 postEditBlogR :: Handler Html
@@ -39,3 +41,9 @@ postEditBlogR = do
          _ -> defaultLayout $ do
                 setTitle "Please correct your entry form"
                 $(widgetFile "articleAddError")
+
+                
+getJSONBlogR :: Handler Html
+getJSONBlogR = error "Not yest implemented"
+postJSONBlogR :: Handler Html
+postJSONBlogR = error "Not yest implemented"

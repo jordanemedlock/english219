@@ -1,5 +1,21 @@
-h1 {
-    text-align: center
+.jumbotron a {
+  text-align: center;
+  text-shadow: 1px 1px 10px black;
+  color: white !important; 
+}
+
+.bio {
+  font-size: 1.5em;
+}
+
+.jumbotron p {
+  color: white !important;
+  text-shadow: 1px 1px 10px black;
+}
+
+.me {
+  max-width: 300px;
+  box-shadow: 1px 1px 10px black;
 }
 
 .icon {
@@ -28,7 +44,7 @@ textarea.preview.markdown {
 }
 
 .panel-title {
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 .info {
@@ -45,14 +61,36 @@ iframe {
   border-color: #000;
 }
 
-.spoilers:active pre {
-  color: #000;
+
+
+.spoilers:active pre, .spoilers:active code,
+.spoilers:active pre span, .spoilers:active code span {
+  color: rgb(221, 221, 221) !important;
 }
 
-.spoilers pre {
-  background-color: rgb(245, 245, 245);
-  color: rgb(245, 245, 245);
+.spoilers pre, .spoilers code,
+.spoilers pre span, .spoilers code span {
+  background-color: rgb(39, 40, 34) !important;
+  color: rgb(39, 40, 34) !important;
 }
+
+.red {
+  color: #D00;
+  font-weight: bold;
+}
+
+.extra-small {
+  font-size: 0.5em;
+}
+
+img.preview-image {
+  max-height: 300px;
+}
+
+canvas.square-backgrounds {
+  display:none;
+}
+
 
 /*
 .define-title {

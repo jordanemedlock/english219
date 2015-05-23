@@ -14,7 +14,14 @@ $newline never
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-social.css">
+    <script src="/static/highlight/highlight.pack.js"></script>
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/static/js/square-backgrounds.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/highlight/styles/monokai.css">
+
     ^{pageHead pc}
 
     \<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]--> 
@@ -22,11 +29,20 @@ $newline never
     <script>
       document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
   <body>
+    <canvas .square-backgrounds>
     <div class="container">
-      <header>
-        <h1>
-          <img src=@{StaticR img_favicon_png} .icon>
-          Jordan E Medlock&#39;s Website
+      <header .jumbotron>
+        <div .row>
+          <div .col-sm-7>
+            <h1>
+              <a href=@{BlogR}>
+                Jordan E Medlock
+            <p>
+              <a href=@{BioR}>
+                About Me
+          <div .col-sm-5>
+            <img .pull-right .img-rounded .img-responsive .me src=@{StaticR img_jem_png} alt="">
+
       <div id="main" role="main">
         ^{pageBody pc}
       <footer>

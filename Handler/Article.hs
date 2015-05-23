@@ -3,6 +3,8 @@ module Handler.Article where
 import Import
 import Yesod.Markdown
 import Model.Article
+import Yesod.Form.Bootstrap3 (bfs, BootstrapSubmit, bootstrapSubmit, renderBootstrap3, BootstrapFormLayout(..))
+
 
 getArticleR :: ArticleId -> Handler Html
 getArticleR articleId = do
@@ -50,3 +52,24 @@ postEditArticleR articleId = do
             setTitle "Please correct your entry form"
             $(widgetFile "articleAddError")
 
+
+jsonForm :: Form Text
+jsonForm = renderBootstrap3 BootstrapBasicForm $ unTextarea <$> areq textareaField (bfs ("JSON" :: Text)) Nothing
+                      <*  bootstrapSubmit ("Create" :: BootstrapSubmit Text)
+
+
+getJSONArticleR :: ArticleId -> Handler Html
+getJSONArticleR articleId = do
+    article <- runDB $ get404 articleId
+    (jsonWidget, enctype) <- generateFormPost jsonForm
+    defaultLayout $ do
+        let json = articleJson article
+        [whamlet|
+        <pre>
+            #{json}
+        <form method=post enctype=#{enctype}>
+            ^{jsonWidget}
+        |]
+
+postJSONArticleR :: ArticleId -> Handler Html
+postJSONArticleR articleId = error "Not Yet implemented"

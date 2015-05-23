@@ -4,12 +4,12 @@ import Import.NoFoundation
 import Database.Persist.Sql (ConnectionPool, runSqlPool)
 import Text.Hamlet          (hamletFile)
 import Text.Jasmine         (minifym)
-import Yesod.Auth.BrowserId (authBrowserId)
+import Yesod.Auth.Email     -- (authEmail,YesodAuthEmail, AuthEmailId)
 import Yesod.Default.Util   (addStaticContentExternal)
+import Network.Mail.Mime
 import Yesod.Core.Types     (Logger)
 import qualified Yesod.Core.Unsafe as Unsafe
  {-# LANGUAGE OverloadedStrings #-}
-import Data.Text
 
 
 -- | The foundation datatype for your application. This can be a good place to
@@ -37,13 +37,13 @@ instance HasHttpManager App where
 mkYesodData "App" $(parseRoutesFile "config/routes")
 
 menuItems :: [(Route App, Text)]
-menuItems = [(HomeR,"Home"), (BlogR,"Blog")]
+menuItems = [(HomeR,"Home"), (BlogR,"Tutorials")]
 
 
 -- | A convenient synonym for creating forms.
 type Form x = Html -> MForm (HandlerT App IO) (FormResult x, Widget)
 
-
+isAdmin :: Handler AuthResult
 isAdmin = do
     mu <- maybeAuthId
     case mu of
@@ -58,7 +58,8 @@ isAdmin = do
                 Nothing -> return $ Unauthorized "You must be an admin"
                 Just user -> case userIdent user of
                     "jordanemedlock@gmail.com" -> return Authorized
-                    x -> return $ Unauthorized "You must be an admin"
+                    "medlock@unm.edu" -> return Authorized
+                    _ -> return $ Unauthorized "You must be an admin"
 
 -- Please see the documentation for the Yesod typeclass. There are a number
 -- of settings which can be configured by overriding methods here.
@@ -83,7 +84,9 @@ instance Yesod App where
         -- value passed to hamletToRepHtml cannot be a widget, this allows
         -- you to use normal widget features in default-layout.
         pc <- widgetToPageContent $ do
-            addStylesheet $ StaticR css_bootstrap_css
+            addStylesheet $ StaticR bootstrap_dist_css_bootstrap_css
+            addStylesheet $ StaticR bootstrap_dist_css_bootstrap_theme_css
+            addScript $ StaticR bootstrap_dist_js_bootstrap_js
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 
@@ -142,27 +145,70 @@ instance YesodAuth App where
     type AuthId App = UserId
 
     -- Where to send a user after successful login
-    loginDest _ = HomeR
+    loginDest _ = EditBlogR
     -- Where to send a user after logout
     logoutDest _ = HomeR
     -- Override the above two destinations when a Referer: header is present
-    redirectToReferer _ = True
+    redirectToReferer _ = False
 
     getAuthId creds = runDB $ do
         x <- getBy $ UniqueUser $ credsIdent creds
         case x of
-            Just (Entity uid user) -> return $ Just (uid)
+            Just (Entity uid _) -> return $ Just (uid)
             Nothing -> Just <$> insert User
                     { userIdent = credsIdent creds
                     , userPassword = Nothing
                     }
 
     -- You can add other plugins like BrowserID, email or OAuth here
-    authPlugins _ = [authBrowserId def]
+    authPlugins _ = [authEmail]
 
     authHttpManager = getHttpManager
 
 instance YesodAuthPersist App
+
+mySecret :: (IsString a) => a
+mySecret = "This is some secret that only I should know"
+
+instance YesodAuthEmail App where
+    type AuthEmailId App = UserId
+
+    setVerifyKey _ _ = return ()
+
+    addUnverified email _ = do
+        runDB $ insert $ User email Nothing 
+
+    getVerifyKey _ = return $ Just mySecret
+
+    sendVerifyEmail email _ verurl = liftIO $ do
+        print verurl
+        renderSendMail (simpleMail' 
+            (Address Nothing email) 
+            (Address Nothing "noreply@jordanemedlock.com")
+            "Please Confirm"
+            ("Please go to this address to confirm: " ++ (pack . unpack) verurl))
+
+    getEmailCreds email = runDB $ do
+        mu <- getBy $ UniqueUser email
+        case mu of
+            Nothing -> return Nothing
+            Just (Entity uid u) -> return $ Just EmailCreds
+                { emailCredsId = uid
+                , emailCredsAuthId = Just uid
+                , emailCredsStatus = isJust $ userPassword u
+                , emailCredsVerkey = Just mySecret
+                , emailCredsEmail = email
+                }
+
+    getEmail = runDB . fmap (fmap userIdent) . get
+
+    verifyAccount = return . Just 
+
+    setPassword uid pass = runDB $ update uid [UserPassword =. Just pass]
+    getPassword = runDB . fmap (join . fmap userPassword) . get
+
+
+    afterPasswordRoute _ = EditBlogR
 
 -- This instance is required to use forms. You can modify renderMessage to
 -- achieve customized and internationalized form validation messages.

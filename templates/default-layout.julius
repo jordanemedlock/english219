@@ -1,4 +1,19 @@
 $(function () {
+  // $.resize(function() {
+    $("canvas.square-backgrounds")[0].width = 1000;
+    $("canvas.square-backgrounds")[0].height = 1000;
+    $.redrawCanvas();
+    var image = $("canvas.square-backgrounds")[0].toDataURL();
+    $(".jumbotron").css("background", "transparent url('"+image+"') repeat");
+  // })
+
+  $('pre').each(function(i,block) {
+    hljs.highlightBlock(block);
+  });
+
+  $('div.spoilers pre').each(function(i,block) {
+    hljs.highlightBlock(block);
+  });
 
   $("textarea").keydown(function(e) {
     if(e.keyCode === 9) { // tab was pressed

@@ -3,7 +3,10 @@
         <p> There are no articles in the blog
     $else
         $forall Entity articleId article <- articles
-            ^{articlePreview edit articleId article}
+            $if maybe False id (articlePosted article)
+                ^{articlePreview edit articleId article}
+            $elseif edit 
+                ^{articlePreview edit articleId article}
         $if edit
             <form method=post enctype=#{enctype}>
                 ^{articleWidget}
