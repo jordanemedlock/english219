@@ -8,5 +8,10 @@
             $elseif edit 
                 ^{articlePreview edit articleId article}
         $if edit
+            <h3>Create new Article
             <form method=post enctype=#{enctype}>
                 ^{articleWidget}
+            <br>
+            <h3>Upload new Photo
+            <form method=post enctype=#{enctype2} action=@{UploadPhotoR}>
+                ^{photoWidget}

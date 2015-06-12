@@ -28,6 +28,7 @@ library
                      Handler.LearnTOC
                      Handler.Blog
                      Handler.Article
+                     Handler.UploadPhoto
                      Model.Article
                      MenuItems
 
@@ -95,8 +96,7 @@ library
                  , aeson-pretty
 
 executable         english219
-    if flag(library-only)
-        Buildable: False
+    Buildable: True
 
     main-is:           main.hs
     hs-source-dirs:    app

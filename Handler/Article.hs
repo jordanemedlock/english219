@@ -12,8 +12,6 @@ getArticleR articleId = do
     liftIO $ print (articleTimePosted article)
     defaultLayout $ do
         setTitle $ toHtml $ articleTitle article
-        let route = BlogR
-        $(widgetFile "menu")
         $(widgetFile "article")
 
 deleteArticleR :: ArticleId -> Handler Html
