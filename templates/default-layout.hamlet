@@ -2,6 +2,22 @@ $maybe msg <- mmsg
   <div #message>#{msg}
 
 ^{widget}
-
-<a href=@{EditBlogR}>
-  admin area
+<!--
+<div class="hidden-sm">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-5538815950211822"
+        data-ad-slot="2619848596">
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+<!-- Bottom Jem responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5538815950211822"
+     data-ad-slot="8186874197"
+     data-ad-format="auto"><
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});

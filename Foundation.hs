@@ -45,21 +45,7 @@ type Form x = Html -> MForm (HandlerT App IO) (FormResult x, Widget)
 
 isAdmin :: Handler AuthResult
 isAdmin = do
-    mu <- maybeAuthId
-    case mu of
-        Nothing -> return AuthenticationRequired
-        Just uid -> do
-            muser <- runDB $ get uid
-            liftIO $ do
-                putStrLn "***"
-                print (userIdent <$> muser)
-                putStrLn "***"
-            case muser of 
-                Nothing -> return $ Unauthorized "You must be an admin"
-                Just user -> case userIdent user of
-                    "jordanemedlock@gmail.com" -> return Authorized
-                    "medlock@unm.edu" -> return Authorized
-                    _ -> return $ Unauthorized "You must be an admin"
+    return Authorized
 
 -- Please see the documentation for the Yesod typeclass. There are a number
 -- of settings which can be configured by overriding methods here.
