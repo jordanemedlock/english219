@@ -17,3 +17,4 @@
 /delete/blog/#ArticleId DeleteArticleR GET DELETE
 /edit/blog/#ArticleId EditArticleR GET POST
 /bio BioR GET 
+/upload/photo UploadPhotoR POST

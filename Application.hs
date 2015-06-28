@@ -38,6 +38,7 @@ import Handler.Project3
 import Handler.LearnTOC
 import Handler.Blog
 import Handler.Article
+import Handler.UploadPhoto
 
 
 

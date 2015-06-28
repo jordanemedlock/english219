@@ -3,14 +3,12 @@ module Handler.Blog (
     getEditBlogR,
     postEditBlogR,
     getJSONBlogR,
-    postJSONBlogR,
-    YesodNic,
-    nicHtmlField
+    postJSONBlogR
 ) where
 
 import Import
-import Yesod.Form.Nic (YesodNic, nicHtmlField)
-import Model.Article
+import Yesod.Form.Bootstrap3
+import Model.Article 
 
 getBlogR :: Handler Html
 getBlogR = partialGetBlog False BlogR
@@ -25,11 +23,18 @@ partialGetBlog edit route = do
     -- We'll need the two "objects": articleWidget and enctype
     -- to construct the form (see templates/articles.hamlet).
     (articleWidget, enctype) <- generateFormPost $ articleForm Nothing
+    (photoWidget, enctype2) <- generateFormPost $ photoUploadForm
     defaultLayout $ do
         let color = "red"
         setTitle "Jordan E Medlock"
         $(widgetFile "articles")
 
+photoUploadForm :: Form (FileInfo, Text)
+photoUploadForm = renderBootstrap3 bootstrapSettings $ (,)
+    <$> areq fileField (bfs ("Photo File" :: Text)) Nothing
+    <*> areq textField (bfs ("File Name" :: Text)) Nothing
+    <*  bootstrapSubmit ("Upload" :: BootstrapSubmit Text)
+    
 postEditBlogR :: Handler Html
 postEditBlogR = do
     ((res,articleWidget),enctype) <- runFormPost $ articleForm Nothing
@@ -45,5 +50,6 @@ postEditBlogR = do
                 
 getJSONBlogR :: Handler Html
 getJSONBlogR = error "Not yest implemented"
+
 postJSONBlogR :: Handler Html
 postJSONBlogR = error "Not yest implemented"

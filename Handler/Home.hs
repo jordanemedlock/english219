@@ -39,7 +39,7 @@ getBioR = do
           Computer Science degree. I love to create new things and I love 
           to teach.
         <p>
-          Jordan is currently attending the University of New Mexico, working to obtain his bachelor's degree in Computer Science. He has had 6 years experience in Computer Science, including 4 years participation in the New Mexico Supercomputing Challenge. In Jordan's last year of participation in the Challenge, he won first place for his work on a program which identified Alzheimer's plaque in transgenic mouse brains. He now is a member on the board of the Supercomputing Challenge in addition to the Umali board. For Umali, Jordan is the Webmaster and information technology specialist.
+          I am currently attending the University of New Mexico, working to obtain my bachelor's degree in Computer Science. I have 6 years experience in Computer Science, including 4 years participating in the New Mexico Supercomputing Challenge. In my last year participating in the Challenge, I won first place for my work on a program which identifies Alzheimer's plaque in transgenic mouse brains. 
     <div .panel .panel-default>
       <div .panel-heading>
         <h2 .panel-title>
@@ -61,9 +61,6 @@ getBioR = do
             <a href="http://uaft.org">
               Umali Autism Foundation Tanzania
           <li>
-            <a href="http://jordanemedlock.com:8000">
-              An Informatics Platform for Natural Product Drug Discovery
-          <li>
             <a href="http://jordanemedlock.com:8888">
               Digital Aristotle
 
@@ -71,3 +68,7 @@ getBioR = do
 
 
     |]
+
+            --   <li>
+            -- <a href="http://jordanemedlock.com:8000">
+            --   An Informatics Platform for Natural Product Drug Discovery
